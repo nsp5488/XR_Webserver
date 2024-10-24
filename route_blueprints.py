@@ -12,7 +12,11 @@ def index():
 
 @blueprint.route('/<value>')
 def success(value):
-    return render_template('index.html', folder_name=value)
+    path = os.path.join(current_app.config['UPLOAD_PATH'], value)
+    if os.path.exists(path):
+        return render_template('index.html', folder_name=value)
+    else:
+        return redirect(url_for('route_blueprints.index'))
 
 
 @blueprint.route('/', methods=['POST'])
@@ -24,11 +28,11 @@ def upload_file():
         file_extension = os.path.splitext(filename)[1]
         if file_extension not in current_app.config["VALID_EXTENSIONS"]:
             abort(400)
-            
+
         # save the file, convert it to images, then remove the file to free up storage.
-        uploaded_file.save(filename)
-        new_folder = convert_and_save(filename)
-        os.remove(uploaded_file)
+        uploaded_file.save(os.path.join(current_app.config["UPLOAD_PATH"], filename))
+        new_folder = convert_and_save(filename, current_app.config["UPLOAD_PATH"])
+        os.remove(os.path.join(current_app.config["UPLOAD_PATH"], filename))
 
 
         return redirect(url_for('route_blueprints.success', value=new_folder))
