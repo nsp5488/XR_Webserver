@@ -23,9 +23,10 @@ def upload_file():
 def upload(folder):
     index = request.args.get("index")
     if index is not None:
-        return send_from_directory(app.config['UPLOAD_PATH'] + "/" + folder, f"{index}.jpg")
 
-    items = len(os.listdir(app.config['UPLOAD_PATH'] + "/" + folder))
+        return send_from_directory(os.path.join(app.config['UPLOAD_PATH'], folder), f"{index}.jpg")
+
+    items = len(os.listdir(os.path.join(app.config['UPLOAD_PATH'], folder)))
     return {"slides": items}
 
 
