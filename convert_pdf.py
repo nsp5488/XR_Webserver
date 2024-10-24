@@ -1,6 +1,6 @@
 from pdf2image import convert_from_path
 from random import SystemRandom
-from string import ascii_letters, digits
+from string import ascii_lowercase, digits
 import os
 
 FILE_NAME_SIZE = 5
@@ -9,7 +9,7 @@ UPLOAD_PATH = "uploads"
 
 def convert_and_save(filename: str) -> str:
     images = convert_from_path(filename)
-    new_folder = ''.join(SystemRandom().choice(ascii_letters + digits)
+    new_folder = ''.join(SystemRandom().choice(ascii_lowercase + digits)
                          for _ in range(FILE_NAME_SIZE))
 
     os.mkdir(os.path.join(UPLOAD_PATH, new_folder))

@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>File Upload</title>
-  </head>
-  <body>
-    <h1>File Upload</h1>
-    <form method="POST" action="" enctype="multipart/form-data">
-      <p><input type="file" name="file" /></p>
-      <p><input type="submit" value="Submit" /></p>
-    </form>
-  </body>
+  {% if not folder_name %}
+  <div>
+    <head>
+      <title>File Upload</title>
+    </head>
+    <body>
+      <h1>File Upload</h1>
+      <form method="POST" action="" enctype="multipart/form-data">
+        <p><input type="file" name="file" /></p>
+        <p><input type="submit" value="Submit" /></p>
+      </form>
+    </body>
+  </div>
+  {% else %}
+  <div>
+    <head>
+      <title>Success!</title>
+    </head>
+
+    <body>
+      <h1>File Uploaded Successfully</h1>
+      <p>Use code {{folder_name}} to access your slides within the app!</p>
+    </body>
+  </div>
+  {% endif %}
 </html>
