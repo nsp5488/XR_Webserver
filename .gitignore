@@ -1,6 +1,5 @@
 uploads/*
-__pycache__/*
+__pycache__/
 *.pdf
-dist/*
-server/*
-server/lib/*
+dist/
+.venv/
