@@ -11,7 +11,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Setup the environment to what the application expects
 COPY . /usr/src/app
 COPY templates /usr/src/app/templates
-
+EXPOSE  8000
 CMD ["uwsgi", "--http", "0.0.0.0:8000", "--master", "-w", "wsgi:app"]
 
 

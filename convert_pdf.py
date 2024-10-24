@@ -9,13 +9,19 @@ UPLOAD_PATH = "uploads"
 
 def convert_and_save(filename: str) -> str:
     images = convert_from_path(filename)
-    new_folder = ''.join(SystemRandom().choice(ascii_lowercase + digits)
-                         for _ in range(FILE_NAME_SIZE))
-
+    
+    existing_filenames = set(os.listdir(UPLOAD_PATH))
+    
+    
+    while new_folder in existing_filenames:
+        new_folder = ''.join(SystemRandom().choice(ascii_lowercase + digits)
+            for _ in range(FILE_NAME_SIZE))
+        
     os.mkdir(os.path.join(UPLOAD_PATH, new_folder))
     for i, image in enumerate(images):
         image.save(
             os.path.join(UPLOAD_PATH, new_folder, f"{i}.jpg"))
+        
     return new_folder
 
 
