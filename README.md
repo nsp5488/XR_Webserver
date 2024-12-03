@@ -4,9 +4,9 @@
 ```source ./server/bin/activate```[bash]
 * Run the application:
 ```python webserver.py``[bash]
-* Navigate to http://127.0.0.1:5000 to access the upload page
-* http://127.0.0.1:5000/uploads/\<code\> returns a JSON containing the number of slides in the presentation
-* http://127.0.0.1:5000/uploads/\<code\>?index={N} returns the Nth slide of the presentation
+* Navigate to <http://127.0.0.1:5000> to access the upload page
+* <http://127.0.0.1:5000/uploads/><code\> returns a JSON containing the number of slides in the presentation
+* <http://127.0.0.1:5000/uploads/><code\>?index={N} returns the Nth slide of the presentation
 
 ```[bash]
 
