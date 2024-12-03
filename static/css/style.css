@@ -1,0 +1,109 @@
+/* Reset default styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+/* body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #000000;
+} */
+
+
+/* File upload container */
+.file-upload {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Form header */
+h1 {
+  color: #C8102E;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Label for the "Choose File" button */
+.file-label {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #C8102E;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.file-label:hover {
+  background-color: #C80810;
+}
+
+/* Hide the default file input */
+input[type="file"] {
+  display: none;
+}
+
+/* Submit button styling */
+.file-upload-btn {
+  background-color: #C8102E;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.file-upload-btn:hover {
+  background-color: #C80810;
+}
+
+/* Filename display styling */
+#filename-display {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #000000;
+}
+
+/* Success message container */
+div > h1 {
+  color: #000000;
+  font-size: 24px;
+}
+
+div > p {
+  font-size: 16px;
+  color: #000000;
+}
+
+/* General spacing for all div elements */
+div {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Ensure proper layout when content overflows (for mobile responsiveness) */
+@media (max-width: 600px) {
+  body {
+    padding: 20px;
+  }
+
+  .file-upload {
+    width: 100%;
+  }
+}
