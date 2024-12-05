@@ -1,11 +1,11 @@
 from pdf2image import convert_from_path
 from random import SystemRandom
-from string import ascii_lowercase, digits
+from string import digits
 import os
 
 FILE_NAME_SIZE = 5
 def generate_filename(used:set) -> str:
-    helper = lambda: ''.join(SystemRandom().choice(ascii_lowercase + digits)
+    helper = lambda: ''.join(SystemRandom().choice("ABC" + digits)
             for _ in range(FILE_NAME_SIZE))
     filename = helper()
     while filename in used:

@@ -5,7 +5,6 @@
   box-sizing: border-box;
 }
 
-
 /* File upload container */
 .file-upload {
   background-color: #ffffff;
@@ -19,7 +18,7 @@
 
 /* Form header */
 h1 {
-  color: #C8102E;
+  color: #c8102e;
   font-size: 24px;
   margin-bottom: 20px;
 }
@@ -28,7 +27,7 @@ h1 {
 .file-label {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #C8102E;
+  background-color: #c8102e;
   color: white;
   font-size: 16px;
   border-radius: 5px;
@@ -38,7 +37,7 @@ h1 {
 }
 
 .file-label:hover {
-  background-color: #C80810;
+  background-color: #c80810;
 }
 
 /* Hide the default file input */
@@ -48,7 +47,7 @@ input[type="file"] {
 
 /* Submit button styling */
 .file-upload-btn {
-  background-color: #C8102E;
+  background-color: #c8102e;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -59,7 +58,7 @@ input[type="file"] {
 }
 
 .file-upload-btn:hover {
-  background-color: #C80810;
+  background-color: #c80810;
 }
 
 /* Filename display styling */
