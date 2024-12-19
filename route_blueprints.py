@@ -13,12 +13,17 @@ def index():
 @blueprint.route('/<value>')
 def success(value):
     path = os.path.join(current_app.config['UPLOAD_PATH'], value)
-    cleaned_path = sterilize_path(current_app.config['UPLOAD_PATH'], path)
-    if os.path.exists(cleaned_path):
+    cleaned_path = sterilize_path(path, current_app.config['UPLOAD_PATH'])
+    print(cleaned_path)
+    if cleaned_path is not None and os.path.exists(path):
         return render_template('home.html', folder_name=value)
     else:
         return redirect(url_for('route_blueprints.index'))
-
+        
+@blueprint.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(current_app.root_path, 'static'),
+                               'images/favicon.png', mimetype='image/vnd.microsoft.icon')
 @blueprint.route("/about")
 def about():
     return render_template('about.html')

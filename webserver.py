@@ -16,7 +16,7 @@ def create_app():
 if __name__ == '__main__':
     app = create_app()
     # if running locally, use the local uploads folder
-    app.config['UPLOAD_PATH'] = 'uploads' 
+    app.config['UPLOAD_PATH'] = os.path.realpath('./uploads')
     app.config['DELETE_IDENTIFIER'] = 'delete123'
     app.config["ADMIN_PASSWORD"] = "password"
     app.run()

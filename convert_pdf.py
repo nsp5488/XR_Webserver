@@ -43,15 +43,19 @@ def get_current_uploads(upload_directory:os.path, valid_extensions)-> list[str]:
 def delete_folder(upload_directory:os.path, code:str) -> None:
     rmtree(os.path.join(upload_directory, code))
 
-def sterilize_path(path:os.path, allowed_base:os.path,subdir_allowed:bool)-> os.path:
-    real_path = os.realpath(path)
-     if subdir_allowed:
-        prefix = os.path.commonpath((basepath, real_filepath))
-    else:
-        prefix = os.path.dirname(real_filepath) #directory of the file
+def sterilize_path(path:os.path, allowed_base:os.path,subdir_allowed=True)-> os.path:
+    real_path = os.path.realpath(path)
+    print(real_path)
+    print(allowed_base)
+    
 
-    if prefix == basepath:
-        return real_filepath
+    if subdir_allowed:
+        prefix = os.path.commonpath((allowed_base, real_path))
+    else:
+        prefix = os.path.dirname(real_path) #directory of the file
+    print(prefix)
+    if prefix == allowed_base:
+        return real_path
     else:
         return None
 
