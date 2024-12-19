@@ -1,6 +1,6 @@
 from flask import Blueprint, send_from_directory, redirect, url_for, render_template, request, current_app, abort
 import os
-from convert_pdf import convert_and_save, get_current_uploads, delete_folder
+from convert_pdf import convert_and_save, get_current_uploads, delete_folder, sterilize_path
 from werkzeug.utils import secure_filename
 
 blueprint = Blueprint("route_blueprints", __name__)
@@ -13,7 +13,8 @@ def index():
 @blueprint.route('/<value>')
 def success(value):
     path = os.path.join(current_app.config['UPLOAD_PATH'], value)
-    if os.path.exists(path):
+    cleaned_path = sterilize_path(current_app.config['UPLOAD_PATH'], path)
+    if os.path.exists(cleaned_path):
         return render_template('home.html', folder_name=value)
     else:
         return redirect(url_for('route_blueprints.index'))

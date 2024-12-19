@@ -1,0 +1,21 @@
+{
+  "resultIdToNotes": {
+    "0|3": {
+      "status": 1,
+      "comment": ""
+    },
+    "0|2": {
+      "status": 1,
+      "comment": ""
+    },
+    "0|0": {
+      "status": 1,
+      "comment": ""
+    },
+    "0|1": {
+      "status": 1,
+      "comment": ""
+    }
+  },
+  "hiddenRules": []
+}
