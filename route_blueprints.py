@@ -14,7 +14,6 @@ def index():
 def success(value):
     path = os.path.join(current_app.config['UPLOAD_PATH'], value)
     cleaned_path = sterilize_path(path, current_app.config['UPLOAD_PATH'])
-    print(cleaned_path)
     if cleaned_path is not None and os.path.exists(path):
         return render_template('home.html', folder_name=value)
     else:
