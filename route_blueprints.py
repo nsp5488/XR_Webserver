@@ -1,22 +1,54 @@
 from flask import Blueprint, send_from_directory, redirect, url_for, render_template, request, current_app, abort
 import os
-from convert_pdf import convert_and_save
+from convert_pdf import convert_and_save, get_current_uploads, delete_folder
 from werkzeug.utils import secure_filename
 
 blueprint = Blueprint("route_blueprints", __name__)
 
 @blueprint.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('home.html')
 
 
 @blueprint.route('/<value>')
 def success(value):
     path = os.path.join(current_app.config['UPLOAD_PATH'], value)
     if os.path.exists(path):
-        return render_template('index.html', folder_name=value)
+        return render_template('home.html', folder_name=value)
     else:
         return redirect(url_for('route_blueprints.index'))
+
+@blueprint.route("/about")
+def about():
+    return render_template('about.html')
+
+
+@blueprint.route('/help')
+def help():
+    # Render the Help page with a large text area
+    return render_template('help.html')
+
+@blueprint.route('/admin', methods=['GET', 'POST'])
+def admin():
+    if request.method == 'POST':
+        # Handle form submission for Admin page
+        string_input = request.form['string_input']
+        if string_input == current_app.config["ADMIN_PASSWORD"]:
+            presentations = get_current_uploads(current_app.config['UPLOAD_PATH'], current_app.config['VALID_EXTENSIONS'])
+            return render_template('admin.html', presentations=presentations, delete_id=current_app.config['DELETE_IDENTIFIER'])
+    # Render the Admin page with the form
+    return render_template('admin.html')
+
+@blueprint.route('/delete', methods=["POST"])
+def delete():
+    # Ensure that this request is authenticated properly
+    if request.form['form_identifier'] != current_app.config['DELETE_IDENTIFIER']:
+        abort(401)
+    code = request.form['code']
+    delete_folder(current_app.config['UPLOAD_PATH'], code)
+    presentations = get_current_uploads(current_app.config['UPLOAD_PATH'], current_app.config['VALID_EXTENSIONS'])
+    return render_template('admin.html', presentations=presentations, delete_id=current_app.config['DELETE_IDENTIFIER'])
+
 
 
 @blueprint.route('/', methods=['POST'])
@@ -46,5 +78,5 @@ def upload(folder):
         return send_from_directory(os.path.join(current_app.config['UPLOAD_PATH'], folder), f"{index}.jpg")
 
     items = len(os.listdir(os.path.join(
-        current_app.config['UPLOAD_PATH'], folder)))
+        current_app.config['UPLOAD_PATH'], folder))) - 1 # remove 1 for the metadata file
     return {"slides": items}

@@ -14,5 +14,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /usr/src/app
 COPY templates /usr/src/app/templates
 EXPOSE  8000
+
+ENV UPLOAD_PATH='/mnt/uploads'
+ENV DELETE_IDENTIFIER='delete123'
+ENV ADMIN_PASSWORD="password"
+
 VOLUME ["/mnt/uploads"]
 CMD ["uwsgi", "--http", "0.0.0.0:8000", "--master", "-w", "wsgi:app"]

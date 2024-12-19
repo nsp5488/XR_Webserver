@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>About</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <style>
+      body {
+        background-image: url("{{ url_for('static', filename='images/bg.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        color: #333;
+        flex-direction: column; /* Ensures content stacks vertically */
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('route_blueprints.index') }}">Home</a></li>
+        <li><a href="{{ url_for('route_blueprints.about') }}">About</a></li>
+        <li><a href="{{ url_for('route_blueprints.help') }}">Help</a></li>
+        <li><a href="{{ url_for('route_blueprints.admin') }}">Admin</a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <div class="file-upload about-card">
+        <h1>About</h1>
+        <div class="video-container">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/XnOVqCA4Q3c?si=C11PH4AWnXZie2dl"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

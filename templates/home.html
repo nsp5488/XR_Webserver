@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}"
+  />
+  <style>
+    body {
+      background-image: url("{{ url_for('static', filename='images/bg.jpg') }}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+      width: 100%;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      color: #333;
+      flex-direction: column; /* Ensures content stacks vertically */
+    }
+  </style>
+
+  <nav>
+    <ul>
+      <li><a href="{{ url_for('route_blueprints.index') }}">Home</a></li>
+      <li><a href="{{ url_for('route_blueprints.about') }}">About</a></li>
+      <li><a href="{{ url_for('route_blueprints.help') }}">Help</a></li>
+      <li><a href="{{ url_for('route_blueprints.admin') }}">Admin</a></li>
+    </ul>
+  </nav>
+
+  <div class="content">
+    {% if not folder_name %}
+    <div class="file-upload">
+      <head>
+        <title>File Upload</title>
+      </head>
+      <body>
+        <h1>File Upload</h1>
+        <form method="POST" action="" enctype="multipart/form-data">
+          <!-- Custom styled "Choose File" button -->
+          <label for="file" class="file-label"> Choose File </label>
+          <input
+            type="file"
+            name="file"
+            id="file"
+            onchange="displayFilename()"
+          />
+          <input type="submit" value="Submit" class="file-upload-btn" />
+        </form>
+
+        <!-- Placeholder for displaying the filename -->
+        <p id="filename-display"></p>
+      </body>
+    </div>
+    {% else %}
+    <div class="file-upload">
+      <head>
+        <title>Success!</title>
+      </head>
+      <body>
+        <h1>File Uploaded Successfully</h1>
+        <p>Use code {{ folder_name }} to access your slides within the app!</p>
+      </body>
+    </div>
+    {% endif %}
+  </div>
+
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</html>

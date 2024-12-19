@@ -4,7 +4,15 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+/* Push content down to account for fixed navigation */
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  text-align: center;
+}
 /* File upload container */
 .file-upload {
   background-color: #ffffff;
@@ -14,6 +22,66 @@
   text-align: center;
   width: 100%;
   max-width: 400px;
+  display: inline-block;
+}
+
+.about-card {
+  width: 80%;
+  max-width: 800px;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+/* Help container styling */
+.help-container {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 800px;
+  max-height: 80vh; /* Limit the height to allow scrolling */
+  text-align: left;
+  font-size: 18px;
+  line-height: 1.8;
+  overflow-y: auto; /* Makes the content scrollable */
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for better aesthetics */
+}
+
+/* Styling for ordered and unordered lists */
+.help-container ol,
+.help-container ul {
+  margin-left: 20px; /* Add left margin to indent lists */
+  margin-bottom: 15px; /* Add spacing between lists */
+  padding-left: 20px; /* Indent list items */
+}
+
+/* Styling for list items */
+.help-container li {
+  margin-bottom: 25px; /* Add spacing between list items */
+}
+
+/* Image styling */
+.help-container img {
+  max-width: 100%; /* Ensure images are responsive */
+  height: auto;
+  display: block;
+  margin: 10px auto; /* Center images with some spacing */
+}
+
+/* Link styling */
+.help-container a {
+  color: #c8102e;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.help-container a:hover {
+  text-decoration: underline;
 }
 
 /* Form header */
@@ -61,6 +129,11 @@ input[type="file"] {
   background-color: #c80810;
 }
 
+.delete-btn {
+  padding: 5px 10px;
+  margin-right: 10px;
+}
+
 /* Filename display styling */
 #filename-display {
   margin-top: 20px;
@@ -94,4 +167,39 @@ div {
   .file-upload {
     width: 100%;
   }
+}
+
+/* Navigation bar styling */
+nav {
+  background-color: #c8102e;
+  width: 100%;
+  padding: 10px 0;
+  position: fixed; /* Keep the menu bar at the top */
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 1000; /* Ensure the menu is above all other content */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ffdd57;
 }

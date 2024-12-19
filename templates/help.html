@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Help</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <style>
+      .help-container {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        padding: 20px;
+        max-width: 800px;
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.6;
+        margin: auto;
+      }
+      body {
+        background-image: url("{{ url_for('static', filename='images/bg.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        color: #333;
+        flex-direction: column; /* Ensures content stacks vertically */
+        background-attachment: fixed; /* Keeps the background fixed while scrolling */
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('route_blueprints.index') }}">Home</a></li>
+        <li><a href="{{ url_for('route_blueprints.about') }}">About</a></li>
+        <li><a href="{{ url_for('route_blueprints.help') }}">Help</a></li>
+        <li><a href="{{ url_for('route_blueprints.admin') }}">Admin</a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <div class="help-container">
+        <h1>Help</h1>
+        <h3>Uploading a Presentation from Google Slides</h3>
+        <ol>
+          <li>
+            <h5>Download your slides from google presentations as a PDF</h5>
+            <ol type="a">
+              <li>
+                <p>File &lt; Download &lt; PDF</p>
+                <img
+                  src="{{ url_for('static', filename='images/gSlide.png') }}"
+                />
+              </li>
+            </ol>
+          </li>
+          <li>
+            <h5>Upload your slides to the slide upload website</h5>
+            <ol type="a">
+              <li>Click 'Choose File'</li>
+              <li>Select the slides that you just downloaded</li>
+              <li>Click 'Submit'</li>
+              <li>Wait a few seconds</li>
+              <li>
+                You should get moved to a screen that looks like this, with your
+                5 digit code on it
+                <img
+                  src="{{ url_for('static', filename='images/upload.png') }}"
+                />
+              </li>
+            </ol>
+          </li>
+          <li>
+            <h5>Access the slides in the app</h5>
+            <ol type="a">
+              <li>Launch the app in the VR headset</li>
+              <li>You will be greeted with a main menu</li>
+              <li>Click 'Load Presentation'</li>
+              <li>
+                Type in the code that you received from the website by pointing
+                at the numpad on screen and pressing the trigger button on the
+                right VR controller
+              </li>
+              <li>Click 'Start'</li>
+              <li>Wait a few seconds</li>
+              <li>
+                You should be brought into the classroom scene where you can
+                give the presentation
+              </li>
+            </ol>
+          </li>
+          <li>
+            <h5>Giving the presentation</h5>
+            <ol type="a">
+              <li>
+                Once you are in the classroom scene your slides should be on
+                both the monitor in front of you and on the projector behind you
+              </li>
+              <li>
+                Press the 'A' button on the right controller to advance a slide
+              </li>
+              <li>
+                Press the 'B' button on the right controller to go back a slide
+              </li>
+              <li>
+                There is a timer on the desk next to the laptop with a 'Start'
+                and a 'Pause' button, point at either button and press the
+                trigger on the right controller to interact with them.
+              </li>
+              <li>
+                On the other side of the desk, there are two buttons, one which
+                lets you restart the presentation you are giving, and one that
+                brings you back to the main menu. You also interact with these
+                by pointing at them and pressing trigger on the right controller
+              </li>
+            </ol>
+          </li>
+          <li>
+            Any additional questions should be answerable by watching
+            <a href="https://youtu.be/rrQLxSeWuFo ">this video walkthrough</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>

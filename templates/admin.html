@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <style>
+      body {
+        background-image: url("{{ url_for('static', filename='images/bg.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        color: #333;
+        flex-direction: column; /* Ensures content stacks vertically */
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('route_blueprints.index') }}">Home</a></li>
+        <li><a href="{{ url_for('route_blueprints.about') }}">About</a></li>
+        <li><a href="{{ url_for('route_blueprints.help') }}">Help</a></li>
+        <li><a href="{{ url_for('route_blueprints.admin') }}">Admin</a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <div class="file-upload">
+        <h1>Admin</h1>
+        {% if not delete_id %}
+        <form method="POST" action="{{ url_for('route_blueprints.admin') }}">
+          <label for="string_input">Enter the admin passcode:</label>
+          <input
+            style="padding-bottom: 5px"
+            type="text"
+            id="string_input"
+            name="string_input"
+            required
+          />
+          <button type="submit" class="file-upload-btn">Submit</button>
+        </form>
+        {% else %}
+        <div>
+          <h2>Presentations:</h2>
+          {% if not presentations %}
+          <p>No presentations currently stored!</p>
+          {% else %} {% for presentation in presentations %}
+          <form method="POST" action="{{url_for('route_blueprints.delete')}}">
+            <input type="hidden" name="code" value="{{presentation.code}}" />
+            <input type="hidden" name="form_identifier" value="{{delete_id}}" />
+            <input
+              type="submit"
+              value="Delete"
+              class="file-upload-btn delete-btn"
+              style="float: left"
+            />
+            <p style="float: left; padding: 5px 10px">
+              {{ presentation.filename }}
+            </p>
+          </form>
+          <div style="clear: both">&nbsp;</div>
+          {% endfor %} {% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>
